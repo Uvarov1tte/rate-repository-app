@@ -45,9 +45,8 @@ export default defineConfig([{
 
     rules: {
         "indent": ["error", 4],
-        "linebreak-style": ["error", "windows"],
         "quotes": ["error", "double"],
-        "semi": ["error", "never"],
+        "semi": ["error", "always"],
         "eqeqeq": "error",
         "no-trailing-spaces": "error",
         "object-curly-spacing": ["error", "always"],
