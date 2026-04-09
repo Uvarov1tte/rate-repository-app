@@ -3,7 +3,7 @@ const theme = {
         primary: "#3f4450",
         secondary: "#618586",
         accent: "#fe5f55",
-        contrast: "#eaedee",
+        contrast: "#edeeea",
         gray: "#c0d3d3"
     },
     fontSizes: {

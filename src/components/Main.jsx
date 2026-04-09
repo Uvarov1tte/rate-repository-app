@@ -1,11 +1,11 @@
-import Constants from "expo-constants";
 import { Text, StyleSheet, View } from "react-native";
-import RepositoryList from "./RepositoryList"
+import RepositoryList from "./RepositoryList";
 import AppBar from "./AppBar";
+import theme from "../theme";
 
 const styles = StyleSheet.create({
     container: {
-        backgroundColor: "#fff",
+        backgroundColor: theme.colors.gray,
         flexGrow: 1,
         flexShrink: 1,
     },
@@ -15,10 +15,8 @@ const Main = () => {
     return (
         <View style={styles.container}>
             <AppBar></AppBar>
-            <Text>Rate Repository Application</Text>
             <RepositoryList></RepositoryList>
         </View>
-
     );
 };
 

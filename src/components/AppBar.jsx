@@ -1,20 +1,23 @@
-import { View, StyleSheet } from "react-native";
+import { StyleSheet, Pressable } from "react-native";
 import Constants from "expo-constants";
-import Text from "./Text";
+import TextHeading from "./TextHeading";
+import theme from "../theme";
 
 const styles = StyleSheet.create({
     container: {
         paddingTop: Constants.statusBarHeight,
-        // ...
+        backgroundColor: theme.colors.primary
     },
-    // ...
+    text: {
+        padding: 10,
+    }
 });
 
 const AppBar = () => {
     return (
-        <View style={styles.container}>
-            <Text>Repositories</Text>
-        </View>
+        <Pressable style={styles.container}>
+            <TextHeading style={styles.text} color="contrast" fontWeight="black">Repositories</TextHeading>
+        </Pressable>
     );
 };
 
