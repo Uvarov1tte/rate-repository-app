@@ -19,7 +19,10 @@ const styles = StyleSheet.create({
         color: theme.colors.contrast,
     },
     colorGray: {
-        color: theme.colors.gray
+        color: theme.colors.gray,
+    },
+    colorError: {
+        color: theme.colors.error,
     },
     fontSizeSubheading: {
         fontSize: theme.fontSizes.subheading,
@@ -42,6 +45,7 @@ const Text = ({ color, fontSize, fontWeight, style, ...props }) => {
         color === "accent" && styles.colorAccent,
         color === "contrast" && styles.colorContrast,
         color === "gray" && styles.colorGray,
+        color === "error" && styles.colorError,
         fontSize === "subheading" && styles.fontSizeSubheading,
         fontSize === "heading" && styles.fontSizeHeading,
         fontWeight === "bold" && styles.fontWeightBold,

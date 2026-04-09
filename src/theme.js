@@ -4,7 +4,8 @@ const theme = {
         secondary: "#618586",
         accent: "#fe5f55",
         contrast: "#edeeea",
-        gray: "#c0d3d3"
+        gray: "#c0d3d3",
+        error: "#94243e"
     },
     fontSizes: {
         body: 14,
