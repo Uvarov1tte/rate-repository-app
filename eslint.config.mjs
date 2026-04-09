@@ -31,7 +31,10 @@ export default defineConfig([{
         sourceType: "module",
         parser: babelParser,
         parserOptions: {
-            requireConfigFile: false
+            requireConfigFile: false,
+            ecmaFeatures: {
+                jsx: true,
+            },
         }
     },
 
