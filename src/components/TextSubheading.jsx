@@ -4,8 +4,8 @@ import theme from "../theme";
 
 const styles = StyleSheet.create({
     text: {
-        color: theme.colors.primary,
-        fontSize: theme.fontSizes.body,
+        color: theme.colors.secondary,
+        fontSize: theme.fontSizes.subheading,
         fontFamily: theme.fonts.main,
         fontWeight: theme.fontWeights.normal,
     },
@@ -19,37 +19,21 @@ const styles = StyleSheet.create({
         color: theme.colors.contrast,
     },
     colorGray: {
-        color: theme.colors.gray
-    },
-    fontSizeSubheading: {
-        fontSize: theme.fontSizes.subheading,
-    },
-    fontSizeHeading: {
-        fontSize: theme.fontSizes.heading,
-    },
-    fontWeightBold: {
-        fontWeight: theme.fontWeights.bold,
-    },
-    fontWeightBlack: {
-        fontWeight: theme.fontWeights.black,
+        color: theme.colors.gray,
     },
 });
 
-const Text = ({ color, fontSize, fontWeight, style, ...props }) => {
+const TextSubheading = ({ color, fontSize, fontWeight, style, ...props }) => {
     const textStyle = [
         styles.text,
         color === "secondary" && styles.colorSecondary,
         color === "accent" && styles.colorAccent,
         color === "contrast" && styles.colorContrast,
         color === "gray" && styles.colorGray,
-        fontSize === "subheading" && styles.fontSizeSubheading,
-        fontSize === "heading" && styles.fontSizeHeading,
-        fontWeight === "bold" && styles.fontWeightBold,
-        fontWeight === "black" && styles.fontWeightBlack,
         style,
     ];
 
     return <NativeText style={textStyle} {...props} />;
 };
 
-export default Text;
+export default TextSubheading;

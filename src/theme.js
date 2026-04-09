@@ -1,12 +1,15 @@
 const theme = {
     colors: {
-        primary: "#24292e",
-        secondary: "#586069",
-        accent: "#0366d6",
+        primary: "#3f4450",
+        secondary: "#618586",
+        accent: "#fe5f55",
+        contrast: "#eaedee",
+        gray: "#c0d3d3"
     },
     fontSizes: {
         body: 14,
         subheading: 16,
+        heading: 18,
     },
     fonts: {
         main: "System",
@@ -14,6 +17,7 @@ const theme = {
     fontWeights: {
         normal: "400",
         bold: "700",
+        black: "900",
     },
 };
 
