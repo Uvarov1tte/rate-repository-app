@@ -54,7 +54,7 @@ const SignIn = () => {
                 value={formik.values.username}
                 onChangeText={formik.handleChange("username")}
             />
-            
+
             {formik.touched.password && formik.errors.password && (
                 <Text style={styles.errorMessage} color="error">{formik.errors.password}</Text>
             )}
