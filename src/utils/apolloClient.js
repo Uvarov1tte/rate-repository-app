@@ -1,8 +1,9 @@
 import { ApolloClient, InMemoryCache, HttpLink } from "@apollo/client";
+import Constants from "expo-constants";
 
 const createApolloClient = () => {
     return new ApolloClient({
-        link: new HttpLink({ uri: process.env.EXPO_PUBLIC_APOLLO_URL }),
+        link: new HttpLink({ uri: Constants.expoConfig.extra.APOLLO_URI }),
         cache: new InMemoryCache(),
     });
 };
