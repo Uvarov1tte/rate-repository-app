@@ -3,6 +3,7 @@ import { useFormik } from "formik";
 import Text from "./Text";
 import theme from "../theme";
 import { signInSchema } from "../validation";
+import useSignIn from "../hooks/useSignIn";
 
 const styles = StyleSheet.create({
     container: {
@@ -30,6 +31,20 @@ const styles = StyleSheet.create({
 });
 
 const SignIn = () => {
+    const [signIn, result] = useSignIn();
+
+    const submitForm = async (values) => {
+        const { username, password } = values;
+
+        try {
+            console.log(username, password)
+            const { data } = await signIn({ username, password });
+            console.log(data);
+        } catch (e) {
+            console.log(e);
+        }
+    };
+
     const formik = useFormik({
         initialValues: {
             username: "",
@@ -37,9 +52,10 @@ const SignIn = () => {
         },
         validationSchema: signInSchema,
         onSubmit: values => {
-            console.log(values);
+            submitForm(values);
         }
     });
+
     return (
         <View style={styles.container}>
             {formik.touched.username && formik.errors.username && (
@@ -50,7 +66,7 @@ const SignIn = () => {
                     ...styles.input,
                     borderColor: formik.touched.username && formik.errors.username && theme.colors.error,
                 }}
-                placeholder="Username"r
+                placeholder="Username" r
                 value={formik.values.username}
                 onChangeText={formik.handleChange("username")}
             />

@@ -4,7 +4,7 @@ export const signInSchema = yup.object().shape({
     username: yup
         .string()
         .matches(/[a-zA-Z]+\d*/, "Username must contain alphabetical characters and may contain numbers")
-        .min(6, "Username must have 6 or more characters.")
+        .min(3, "Username must have 3 or more characters.")
         .required("Username is required!"),
     password: yup
         .string()
