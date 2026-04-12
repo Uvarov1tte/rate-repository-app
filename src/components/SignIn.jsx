@@ -33,7 +33,7 @@ const styles = StyleSheet.create({
 
 const SignIn = () => {
     const [signIn, result] = useSignIn();
-    const navigate = useNavigate()
+    const navigate = useNavigate();
 
     const submitForm = async (values) => {
         const { username, password } = values;
