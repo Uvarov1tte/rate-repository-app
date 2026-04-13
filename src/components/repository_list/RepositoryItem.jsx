@@ -1,8 +1,8 @@
 import { View, StyleSheet, Image } from "react-native";
-import Text from "./Text";
-import TextHeading from "./TextHeading";
-import theme from "../theme";
-import TextSubheading from "./TextSubheading";
+import Text from "../common/Text";
+import TextHeading from "../common/TextHeading";
+import theme from "../../theme";
+import TextSubheading from "../common/TextSubheading";
 import RepositoryStat from "./RepositoryStat";
 
 const styles = StyleSheet.create({

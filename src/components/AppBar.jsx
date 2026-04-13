@@ -2,8 +2,8 @@ import { StyleSheet, Pressable, ScrollView } from "react-native";
 import { Link } from "react-router-native";
 import Constants from "expo-constants";
 
-import TextHeading from "./TextHeading";
-import Text from "./Text";
+import TextHeading from "./common/TextHeading";
+import Text from "./common/Text";
 import theme from "../theme";
 import useSignOut from "../hooks/useSignOut";
 import { useQuery } from "@apollo/client/react";

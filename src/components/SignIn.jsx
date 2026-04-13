@@ -1,6 +1,6 @@
 import { View, TextInput, Pressable, StyleSheet } from "react-native";
 import { useFormik } from "formik";
-import Text from "./Text";
+import Text from "./common/Text";
 import theme from "../theme";
 import { signInSchema } from "../validation";
 import useSignIn from "../hooks/useSignIn";
