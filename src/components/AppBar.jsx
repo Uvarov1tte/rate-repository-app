@@ -24,8 +24,6 @@ const AppBar = () => {
     const { data, error, loading } = useQuery(USER_DATA);
     const signOut = useSignOut();
 
-    console.log(data);
-
     const handleSignOut = async () => {
         await signOut();
         console.log("signing out");

@@ -1,9 +1,12 @@
-import { View, StyleSheet, Image } from "react-native";
+import { View, StyleSheet, Image, Pressable } from "react-native";
+import * as Linking from "expo-linking";
+
 import Text from "../common/Text";
 import TextHeading from "../common/TextHeading";
 import theme from "../../theme";
 import TextSubheading from "../common/TextSubheading";
 import RepositoryStat from "./RepositoryStat";
+import { useNavigate } from "react-router-native";
 
 const styles = StyleSheet.create({
     container: {
@@ -38,11 +41,35 @@ const styles = StyleSheet.create({
     statsContainer: {
         flexDirection: "row",
     },
+    button: {
+        backgroundColor: theme.colors.accent,
+        padding: 15,
+        borderRadius: 3,
+    },
+    buttonText: {
+        margin: "auto",
+    },
 });
 
-const RepositoryItem = ({ item }) => {
+const RepositoryItem = ({ single, item }) => {
+    const navigate = useNavigate();
+
+    const handleNavigate = () => {
+        if (single === false) {
+            navigate(`/repository/${item.id}`);
+        }
+    };
+
+    const handleOpenLink = () => {
+        Linking.openURL(item.url);
+    };
+
     return (
-        <View testID="repositoryItem" style={styles.container}>
+        <Pressable
+            testID="repositoryItem"
+            style={styles.container}
+            onPress={handleNavigate}
+        >
             <View style={styles.titleContainer}>
                 <Image
                     style={styles.titleImage}
@@ -62,7 +89,15 @@ const RepositoryItem = ({ item }) => {
                 <RepositoryStat statName="Reviews" stat={item.reviewCount}></RepositoryStat>
                 <RepositoryStat statName="Rating" stat={item.ratingAverage}></RepositoryStat>
             </View>
-        </View>
+            {single &&
+                <Pressable
+                    style={styles.button}
+                    onPress={handleOpenLink}
+                >
+                    <Text style={styles.buttonText} color="contrast" fontWeight="bold">Open in GitHub</Text>
+                </Pressable>
+            }
+        </Pressable>
     );
 };
 
