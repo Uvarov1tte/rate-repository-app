@@ -1,1 +1,4 @@
-import "@testing-library/jest-native/extend-expect";
+// import "@testing-library/jest-dom/extend-expect";
+import "@testing-library/jest-dom";
+
+console.log("setup");

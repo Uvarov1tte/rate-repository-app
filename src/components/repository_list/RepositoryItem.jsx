@@ -42,16 +42,17 @@ const styles = StyleSheet.create({
 
 const RepositoryItem = ({ item }) => {
     return (
-        <View style={styles.container}>
+        <View testID="repositoryItem" style={styles.container}>
             <View style={styles.titleContainer}>
                 <Image
                     style={styles.titleImage}
                     source={{ uri: item.ownerAvatarUrl }}
+                    testID="repositoryImage"
                 />
                 <View style={styles.titleTextContainer}>
-                    <TextHeading style={styles.heading}>{item.fullName}</TextHeading>
-                    <TextSubheading style={styles.subheading}>{item.description}</TextSubheading>
-                    <Text style={styles.keyword} fontWeight="bold" color="contrast">{item.language}</Text>
+                    <TextHeading testID="repositoryName" style={styles.heading}>{item.fullName}</TextHeading>
+                    <TextSubheading testID="repositoryDescription" style={styles.subheading}>{item.description}</TextSubheading>
+                    <Text testID="repositoryLanguage" style={styles.keyword} fontWeight="bold" color="contrast">{item.language}</Text>
                 </View>
             </View>
 
