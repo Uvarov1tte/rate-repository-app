@@ -59,8 +59,16 @@ describe("RepositoryList", () => {
             const repositoryReviewStats = screen.getAllByTestId("repositoryReviews");
             const repositoryRatingStats = screen.getAllByTestId("repositoryRating");
 
+            const displayStat = (stat) => {
+                if (stat >= 1000) {
+                    return `${Math.round(stat / 100) / 10}k`;
+                }
+                console.log(stat);
+                return JSON.stringify(stat);
+            };
 
-            //toHaveTextContent is not working properly for some reasons (error bellow) =>using alterate options
+
+            //toHaveTextContent is not working properly for some reasons (error bellow) =>using altenate options
             //TypeError: expect(...).toHaveTextContext is not a function
 
             for (let i = 0; i <= 1; i++) {
@@ -68,17 +76,17 @@ describe("RepositoryList", () => {
                 expect(repositoryItems[i]).toContainElement(repositoryNames[i]);
                 expect(repositoryNames[i]).toContainElement(screen.getByText(repositories.edges[i].node.fullName));
                 expect(repositoryItems[i]).toContainElement(repositoryDescriptions[i]);
-                expect(repositoryNames[i]).toContainElement(screen.getByText(repositories.edges[i].node.description));
+                expect(repositoryDescriptions[i]).toContainElement(screen.getByText(repositories.edges[i].node.description));
                 expect(repositoryItems[i]).toContainElement(repositoryLanguages[i]);
-                expect(repositoryNames[i]).toContainElement(screen.getByText(repositories.edges[i].node.language));
+                expect(repositoryLanguages[i]).toContainElement(screen.getByText(repositories.edges[i].node.language));
                 expect(repositoryItems[i]).toContainElement(repositoryStarStats[i]);
-                expect(repositoryNames[i]).toContainElement(screen.getByText(repositories.edges[i].node.stargazersCount));
+                expect(repositoryStarStats[i]).toContainElement(screen.getByText(displayStat(repositories.edges[i].node.stargazersCount)));
                 expect(repositoryItems[i]).toContainElement(repositoryForkStats[i]);
-                expect(repositoryNames[i]).toContainElement(screen.getByText(repositories.edges[i].node.forksCount));
+                expect(repositoryForkStats[i]).toContainElement(screen.getByText(displayStat(repositories.edges[i].node.forksCount)));
                 expect(repositoryItems[i]).toContainElement(repositoryReviewStats[i]);
-                expect(repositoryNames[i]).toContainElement(screen.getByText(repositories.edges[i].node.reviewCount));
+                expect(repositoryReviewStats[i]).toContainElement(screen.getAllByText(displayStat(repositories.edges[i].node.reviewCount))[i]); //both review stat are 3
                 expect(repositoryItems[i]).toContainElement(repositoryRatingStats[i]);
-                expect(repositoryNames[i]).toContainElement(screen.getByText(repositories.edges[i].node.ratingAverage));
+                expect(repositoryRatingStats[i]).toContainElement(screen.getByText(displayStat(repositories.edges[i].node.ratingAverage)));
             }
         });
     });
