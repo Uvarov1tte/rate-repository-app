@@ -1,10 +1,10 @@
 import { View, StyleSheet, Image, Pressable } from "react-native";
 import * as Linking from "expo-linking";
 
-import Text from "../common/Text";
-import TextHeading from "../common/TextHeading";
-import theme from "../../theme";
-import TextSubheading from "../common/TextSubheading";
+import Text from "../../common/Text";
+import TextHeading from "../../common/TextHeading";
+import theme from "../../../theme";
+import TextSubheading from "../../common/TextSubheading";
 import RepositoryStat from "./RepositoryStat";
 import { useNavigate } from "react-router-native";
 
@@ -43,6 +43,7 @@ const styles = StyleSheet.create({
     },
     button: {
         backgroundColor: theme.colors.accent,
+        margin: 15,
         padding: 15,
         borderRadius: 3,
     },
@@ -51,17 +52,17 @@ const styles = StyleSheet.create({
     },
 });
 
-const RepositoryItem = ({ single, item }) => {
+const RepositoryItem = ({ single, repository }) => {
     const navigate = useNavigate();
 
     const handleNavigate = () => {
         if (single === false) {
-            navigate(`/repository/${item.id}`);
+            navigate(`/repository/${repository.id}`);
         }
     };
 
     const handleOpenLink = () => {
-        Linking.openURL(item.url);
+        Linking.openURL(repository.url);
     };
 
     return (
@@ -73,21 +74,21 @@ const RepositoryItem = ({ single, item }) => {
             <View style={styles.titleContainer}>
                 <Image
                     style={styles.titleImage}
-                    source={{ uri: item.ownerAvatarUrl }}
+                    source={{ uri: repository.ownerAvatarUrl }}
                     testID="repositoryImage"
                 />
                 <View style={styles.titleTextContainer}>
-                    <TextHeading testID="repositoryName" style={styles.heading}>{item.fullName}</TextHeading>
-                    <TextSubheading testID="repositoryDescription" style={styles.subheading}>{item.description}</TextSubheading>
-                    <Text testID="repositoryLanguage" style={styles.keyword} fontWeight="bold" color="contrast">{item.language}</Text>
+                    <TextHeading testID="repositoryName" style={styles.heading}>{repository.fullName}</TextHeading>
+                    <TextSubheading testID="repositoryDescription" style={styles.subheading}>{repository.description}</TextSubheading>
+                    <Text testID="repositoryLanguage" style={styles.keyword} fontWeight="bold" color="contrast">{repository.language}</Text>
                 </View>
             </View>
 
             <View style={styles.statsContainer}>
-                <RepositoryStat statName="Stars" stat={item.stargazersCount}></RepositoryStat>
-                <RepositoryStat statName="Forks" stat={item.forksCount}></RepositoryStat>
-                <RepositoryStat statName="Reviews" stat={item.reviewCount}></RepositoryStat>
-                <RepositoryStat statName="Rating" stat={item.ratingAverage}></RepositoryStat>
+                <RepositoryStat statName="Stars" stat={repository.stargazersCount}></RepositoryStat>
+                <RepositoryStat statName="Forks" stat={repository.forksCount}></RepositoryStat>
+                <RepositoryStat statName="Reviews" stat={repository.reviewCount}></RepositoryStat>
+                <RepositoryStat statName="Rating" stat={repository.ratingAverage}></RepositoryStat>
             </View>
             {single &&
                 <Pressable

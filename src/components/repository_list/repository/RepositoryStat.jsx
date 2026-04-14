@@ -1,6 +1,6 @@
 import { StyleSheet, View } from "react-native";
-import TextHeading from "../common/TextHeading";
-import TextSubheading from "../common/TextSubheading";
+import TextHeading from "../../common/TextHeading";
+import TextSubheading from "../../common/TextSubheading";
 
 const styles = StyleSheet.create({
     container: {
