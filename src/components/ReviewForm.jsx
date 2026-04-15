@@ -40,7 +40,7 @@ const ReviewForm = () => {
         try {
             console.log(values);
             const { data } = await createReview(values);
-            const repositoryId = data.createReview.repositoryId
+            const repositoryId = data.createReview.repositoryId;
             navigate(`/repository/${repositoryId}`);
         } catch (e) {
             console.log(e);

@@ -16,9 +16,9 @@ const SingleRepository = () => {
         );
     }
 
-    const repository = Object.fromEntries(Object.entries(data.repository).filter(e => e[0] != 'reviews'))
-    console.log(repository)
-    const reviewData = data.repository.reviews
+    const repository = Object.fromEntries(Object.entries(data.repository).filter(e => e[0] !== "reviews"));
+    console.log(repository);
+    const reviewData = data.repository.reviews;
     const reviewNodes = reviewData
         ? reviewData.edges.map(edge => edge.node)
         : [];

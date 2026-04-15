@@ -36,12 +36,12 @@ const styles = StyleSheet.create({
     },
     text: {
     }
-})
+});
 
 const ReviewItem = ({ review }) => {
     // console.log(review)
 
-    const dateCreated = new Date(review.createdAt).toLocaleDateString()
+    const dateCreated = new Date(review.createdAt).toLocaleDateString();
 
     return (
         <View style={styles.container}>
@@ -54,7 +54,7 @@ const ReviewItem = ({ review }) => {
                 <Text>{review.text}</Text>
             </View>
         </View>
-    )
+    );
 };
 
 export default ReviewItem;
