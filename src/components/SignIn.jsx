@@ -69,7 +69,7 @@ const SignIn = () => {
                     ...styles.input,
                     borderColor: formik.touched.username && formik.errors.username && theme.colors.error,
                 }}
-                placeholder="Username" r
+                placeholder="Username"
                 value={formik.values.username}
                 onChangeText={formik.handleChange("username")}
             />

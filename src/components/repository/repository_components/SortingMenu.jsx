@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Pressable, StyleSheet, View } from "react-native";
+import { Pressable, StyleSheet, TextInput, View } from "react-native";
 import { Picker } from '@react-native-picker/picker';
 import Text from "../../common/Text";
 import theme from "../../../theme";
@@ -20,6 +20,13 @@ const styles = StyleSheet.create({
     buttonText: {
         margin: "auto",
     },
+    input: {
+        padding: 15,
+        marginBottom: 15,
+        borderWidth: 1,
+        borderRadius: 3,
+        borderColor: theme.colors.secondary
+    },
 })
 
 const SortingMenu = ({ onSort, currentSort }) => {
@@ -36,6 +43,12 @@ const SortingMenu = ({ onSort, currentSort }) => {
 
     return (
         <View>
+            {/* <TextInput
+                style={styles.input}
+                placeholder="Search"
+                value={filter}
+                onChangeText={setFilter}
+            /> */}
             <Pressable
                 onPress={handlePress}
                 style={styles.button}
