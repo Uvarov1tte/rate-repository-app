@@ -2,7 +2,7 @@ import { View, StyleSheet, FlatList } from "react-native";
 import useSingleRepository from "../../hooks/useSingleRepository";
 import RepositoryItem from "./repository_components/RepositoryItem";
 import Text from "../common/Text";
-import ReviewItem from "./repository_components/ReviewItem";
+import ReviewItem from "../common/ReviewItem";
 
 const SingleRepository = () => {
     const { data, loading } = useSingleRepository();
@@ -27,7 +27,7 @@ const SingleRepository = () => {
         <FlatList
             data={reviewNodes}
             ListHeaderComponent={() => <RepositoryItem single={true} repository={repository} />}
-            renderItem={({ item }) => <ReviewItem review={item} />}
+            renderItem={({ item }) => <ReviewItem ownView={false} review={item} />}
             keyExtractor={item => item.id}
         />
     );

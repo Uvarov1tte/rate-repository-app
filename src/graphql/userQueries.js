@@ -9,12 +9,25 @@ export const SIGNIN = gql`
 `;
 
 export const USER_DATA = gql`
-    query {
+    query getCurrentUser($includeReviews: Boolean = false) {
         me {
             id
             username
+            reviews @include(if: $includeReviews) {
+                edges {
+                    node {
+                        createdAt
+                        id
+                        rating
+                        text
+                        repository {
+                            fullName
+                        }
+                    }
+                }
+            }
         }
-    }    
+    }
 `;
 
 export const SIGNUP = gql`

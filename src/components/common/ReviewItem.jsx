@@ -1,8 +1,8 @@
 import { View, StyleSheet } from "react-native";
-import theme from "../../../theme";
-import Text from "../../common/Text";
-import TextHeading from "../../common/TextHeading";
-import TextSubheading from "../../common/TextSubheading";
+import theme from "../../theme";
+import Text from "./Text";
+import TextHeading from "./TextHeading";
+import TextSubheading from "./TextSubheading";
 
 const styles = StyleSheet.create({
     container: {
@@ -38,7 +38,7 @@ const styles = StyleSheet.create({
     }
 });
 
-const ReviewItem = ({ review }) => {
+const ReviewItem = ({ review, ownView }) => {
     // console.log(review)
 
     const dateCreated = new Date(review.createdAt).toLocaleDateString();
@@ -49,7 +49,7 @@ const ReviewItem = ({ review }) => {
                 <TextHeading style={styles.ratingNumber} color="accent">{review.rating}</TextHeading>
             </View>
             <View style={styles.detailsContainer}>
-                <TextHeading>{review.user.username}</TextHeading>
+                <TextHeading>{ownView ? review.repository.fullName : review.user.username}</TextHeading>
                 <TextSubheading>{dateCreated}</TextSubheading>
                 <Text>{review.text}</Text>
             </View>
