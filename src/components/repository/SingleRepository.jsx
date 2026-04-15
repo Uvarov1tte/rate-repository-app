@@ -1,8 +1,8 @@
 import { View, StyleSheet, FlatList } from "react-native";
 import useSingleRepository from "../../hooks/useSingleRepository";
-import RepositoryItem from "./repository/RepositoryItem";
+import RepositoryItem from "./repository_components/RepositoryItem";
 import Text from "../common/Text";
-import ReviewItem from "./repository/ReviewItem";
+import ReviewItem from "./repository_components/ReviewItem";
 
 const SingleRepository = () => {
     const { data, loading } = useSingleRepository();

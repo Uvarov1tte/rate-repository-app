@@ -1,11 +1,11 @@
 import { StyleSheet, View } from "react-native";
 import { Route, Routes, Navigate } from "react-router-native";
 
-import RepositoryList from "./repository_list/RepositoryList";
+import RepositoryList from "./repository/RepositoryList";
 import SignIn from "./SignIn";
 import AppBar from "./AppBar";
 import theme from "../theme";
-import SingleRepository from "./repository_list/SingleRepository";
+import SingleRepository from "./repository/SingleRepository";
 import ReviewForm from "./ReviewForm";
 import SignUp from "./SignUp";
 
