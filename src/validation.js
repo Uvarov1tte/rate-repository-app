@@ -11,3 +11,18 @@ export const signInSchema = yup.object().shape({
         .min(8, "Password must have 8 or more characters.")
         .required("Password is required!")
 });
+
+export const reviewSchema = yup.object().shape({
+    ownerName: yup
+        .string()
+        .required("Repository owner name is required!"),
+    repositoryName: yup
+        .string()
+        .required("Repository name is required!"),
+    rating: yup
+        .number()
+        .required("Rating is required!"),
+    text: yup
+        .string()
+
+});

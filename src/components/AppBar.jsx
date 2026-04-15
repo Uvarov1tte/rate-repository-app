@@ -36,9 +36,14 @@ const AppBar = () => {
                     <TextHeading style={styles.text} color="contrast" fontWeight="black">Repositories</TextHeading>
                 </Link>
                 {data && data.me ?
-                    <Pressable onPress={handleSignOut}>
-                        <Text style={styles.text} color="contrast" fontSize="heading">Sign out</Text>
-                    </Pressable>
+                    <>
+                        <Link to="/review/create">
+                            <Text style={styles.text} color="contrast" fontSize="heading">Create a review</Text>
+                        </Link>
+                        <Pressable onPress={handleSignOut}>
+                            <Text style={styles.text} color="contrast" fontSize="heading">Sign out</Text>
+                        </Pressable>
+                    </>
                     :
                     <Link to="/signin">
                         <Text style={styles.text} color="contrast" fontSize="heading">Sign in</Text>

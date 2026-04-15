@@ -7,6 +7,7 @@ const useSingleRepository = () => {
 
     const { data, error, loading } = useQuery(GET_SINGLE_REPOSITORY, {
         variables: { id: repositoryId },
+        fetchPolicy: "cache-and-network",
     });
 
     return { data, error, loading };
