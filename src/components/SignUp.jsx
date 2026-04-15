@@ -42,7 +42,7 @@ const SignUp = () => {
 
         try {
             console.log(values);
-            const { username, password } = values
+            const { username, password } = values;
             const { signUpData } = await signUp({ username, password });
             const { signInData } = await signIn({ username, password });
             // console.log(signUpData, signInData);
