@@ -7,10 +7,7 @@ const useOwnReviews = () => {
         fetchPolicy: "cache-and-network",
     });
 
-    // console.log(data.me.reviews)
-
     const reviews = data?.me.reviews;
-    console.log(reviews);
     return { reviews, error, loading };
 };
 

@@ -38,7 +38,6 @@ const ReviewForm = () => {
     const submitForm = async (values) => {
 
         try {
-            console.log(values);
             const { data } = await createReview(values);
             const repositoryId = data.createReview.repositoryId;
             navigate(`/repository/${repositoryId}`);

@@ -25,10 +25,9 @@ const ItemSeparator = () => <View style={styles.separator} />;
 
 export class RepositoryListContainer extends React.Component {
     renderHeader = () => {
-        const { filter, setFilter, currentSort, setCurrentSort, setSortingOption, onEndReach } = this.props;
+        const { filter, setFilter, currentSort, setCurrentSort, setSortingOption } = this.props;
 
         const handleFilter = (text) => {
-            console.log(text);
             setFilter(text);
         };
 
@@ -79,7 +78,6 @@ const RepositoryList = () => {
         : [];
     const onEndReach = () => {
         if (repositories) {
-            console.log("You have reached the end of the list");
             fetchMore();
         }
     };

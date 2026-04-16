@@ -26,7 +26,6 @@ const AppBar = () => {
 
     const handleSignOut = async () => {
         await signOut();
-        console.log("signing out");
     };
 
     return (

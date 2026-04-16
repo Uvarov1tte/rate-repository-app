@@ -10,7 +10,7 @@ const useSingleRepository = (repositoryId) => {
 
     const handleFetchMore = () => {
         const canFetchMore = !loading && data?.repository.reviews.pageInfo.hasNextPage;
-        console.log(!loading);
+
         if (!canFetchMore) {
             return;
         }

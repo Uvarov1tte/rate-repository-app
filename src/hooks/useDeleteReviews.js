@@ -10,7 +10,6 @@ const useDeleteReview = () => {
     });
 
     const deleteReview = async (id) => {
-        console.log(id);
         const mutation = await mutate({ variables: { deleteReviewId: id } });
         refetch();
         return mutation;

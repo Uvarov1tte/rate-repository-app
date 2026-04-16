@@ -1,4 +1,4 @@
-import { screen, render, fireEvent } from "@testing-library/react-native";
+import { screen, render } from "@testing-library/react-native";
 import { RepositoryListContainer } from "../components/repository_list/RepositoryListContainer";
 
 describe("RepositoryList", () => {
@@ -46,7 +46,6 @@ describe("RepositoryList", () => {
                     },
                 ],
             };
-            const repo1 = repositories.edges[0];
 
             render(<RepositoryListContainer repositories={repositories} />);
             const repositoryItems = screen.getAllByTestId("repositoryItem");
@@ -63,7 +62,6 @@ describe("RepositoryList", () => {
                 if (stat >= 1000) {
                     return `${Math.round(stat / 100) / 10}k`;
                 }
-                console.log(stat);
                 return JSON.stringify(stat);
             };
 

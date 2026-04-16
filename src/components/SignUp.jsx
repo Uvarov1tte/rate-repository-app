@@ -41,11 +41,9 @@ const SignUp = () => {
     const submitForm = async (values) => {
 
         try {
-            console.log(values);
             const { username, password } = values;
-            const { signUpData } = await signUp({ username, password });
-            const { signInData } = await signIn({ username, password });
-            // console.log(signUpData, signInData);
+            await signUp({ username, password });
+            await signIn({ username, password });
             navigate("/");
         } catch (e) {
             console.log(e);

@@ -27,7 +27,6 @@ const ReviewButtons = ({ repoId, reviewId }) => {
         Alert.alert("Delete review", "Are you sure you want to delete this review?", [
             {
                 text: "Cancel",
-                onPress: () => console.log("cancelled"),
                 style: "cancel",
             },
             { text: "OK", onPress: async () => await deleteReview(reviewId) },
