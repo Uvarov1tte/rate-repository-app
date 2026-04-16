@@ -1,8 +1,9 @@
-import { View, StyleSheet } from "react-native";
+import { View, StyleSheet, Pressable, Alert } from "react-native";
 import theme from "../../theme";
 import Text from "./Text";
 import TextHeading from "./TextHeading";
 import TextSubheading from "./TextSubheading";
+import ReviewButtons from "./ReviewButtons";
 
 const styles = StyleSheet.create({
     container: {
@@ -27,20 +28,11 @@ const styles = StyleSheet.create({
     detailsContainer: {
         flexGrow: 1,
         flexShrink: 1,
-    },
-    name: {
-
-    },
-    date: {
-
-    },
-    text: {
     }
 });
 
-const ReviewItem = ({ review, ownView }) => {
-    // console.log(review)
 
+const ReviewItem = ({ review, ownView }) => {
     const dateCreated = new Date(review.createdAt).toLocaleDateString();
 
     return (
@@ -52,6 +44,7 @@ const ReviewItem = ({ review, ownView }) => {
                 <TextHeading>{ownView ? review.repository.fullName : review.user.username}</TextHeading>
                 <TextSubheading>{dateCreated}</TextSubheading>
                 <Text>{review.text}</Text>
+                {ownView && <ReviewButtons repoId={review.repository.id} reviewId={review.id} />}
             </View>
         </View>
     );

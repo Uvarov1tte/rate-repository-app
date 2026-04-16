@@ -22,6 +22,7 @@ export const USER_DATA = gql`
                         text
                         repository {
                             fullName
+                            id
                         }
                     }
                 }

@@ -50,12 +50,3 @@ export const GET_SINGLE_REPOSITORY = gql`
         }
     }
 `;
-
-export const CREATE_REVIEW = gql`
-    mutation ($review: CreateReviewInput){
-        createReview(review: $review) {
-            id
-            repositoryId
-        }
-    }
-`;
