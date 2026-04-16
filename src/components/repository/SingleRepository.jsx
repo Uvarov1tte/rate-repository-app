@@ -1,38 +1,35 @@
-import { View, StyleSheet, FlatList } from "react-native";
+import { FlatList } from "react-native";
 import useSingleRepository from "../../hooks/useSingleRepository";
 import RepositoryItem from "./repository_components/RepositoryItem";
-import Text from "../common/Text";
 import ReviewItem from "../common/ReviewItem";
+import { useParams } from "react-router-native";
+import Text from "../common/Text";
 
 const SingleRepository = () => {
-    const { data, loading } = useSingleRepository();
+    const { repositoryId } = useParams();
+    const { repository, error, loading, fetchMore } = useSingleRepository(repositoryId);
 
-    if (loading === true) {
-        console.log("loading");
-        return (
-            <View>
-                <Text>Loading</Text>
-            </View>
-        );
-    }
+    if (error) return <Text>{error.message}</Text>;
+    if (loading) return <Text>loading...</Text>;
 
-    const repository = Object.fromEntries(Object.entries(data.repository).filter(e => e[0] !== "reviews"));
-    console.log(repository);
-    const reviewData = data.repository.reviews;
-    const reviewNodes = reviewData
-        ? reviewData.edges.map(edge => edge.node)
+    const reviews = repository.reviews
+        ? repository.reviews.edges.map(edge => edge.node)
         : [];
+
+    const onEndReach = () => {
+        fetchMore();
+    };
 
     return (
         <FlatList
-            data={reviewNodes}
-            ListHeaderComponent={() => <RepositoryItem single={true} repository={repository} />}
+            data={reviews}
+            onEndReached={onEndReach}
+            onEndReachedThreshold={0.5}
             renderItem={({ item }) => <ReviewItem ownView={false} review={item} />}
-            keyExtractor={item => item.id}
+            keyExtractor={({ id }) => id}
+            ListHeaderComponent={() => <RepositoryItem repository={repository} />}
         />
     );
 };
-
-
 
 export default SingleRepository;

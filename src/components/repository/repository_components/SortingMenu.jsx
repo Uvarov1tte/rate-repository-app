@@ -27,18 +27,18 @@ const styles = StyleSheet.create({
         borderRadius: 3,
         borderColor: theme.colors.secondary
     },
-})
+});
 
 const SortingMenu = ({ onSort, currentSort }) => {
-    const [openMenu, setOpenMenu] = useState(false)
+    const [openMenu, setOpenMenu] = useState(false);
 
     const handleChange = (itemValue, itemIndex) => {
         // setSortingOption(itemValue)
-        onSort(itemValue)
-    }
+        onSort(itemValue);
+    };
 
     const handlePress = () => {
-        setOpenMenu(!openMenu)
+        setOpenMenu(!openMenu);
     };
 
     return (

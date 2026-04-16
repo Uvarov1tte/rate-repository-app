@@ -35,8 +35,8 @@ const ReviewButtons = ({ repoId, reviewId }) => {
 
 
     const handleNavigate = async () => {
-        navigate(`/repository/${repoId}`)
-    }
+        navigate(`/repository/${repoId}`);
+    };
 
 
     return (
@@ -54,7 +54,7 @@ const ReviewButtons = ({ repoId, reviewId }) => {
                 <Text style={styles.buttonText} color="contrast" fontWeight="bold">DeleteReview</Text>
             </Pressable>
         </View>
-    )
-}
+    );
+};
 
-export default ReviewButtons
+export default ReviewButtons;

@@ -25,17 +25,17 @@ const ItemSeparator = () => <View style={styles.separator} />;
 
 export class RepositoryListContainer extends React.Component {
     renderHeader = () => {
-        const { filter, setFilter, currentSort, setCurrentSort, setSortingOption, onEndReach } = this.props
+        const { filter, setFilter, currentSort, setCurrentSort, setSortingOption, onEndReach } = this.props;
 
         const handleFilter = (text) => {
-            console.log(text)
-            setFilter(text)
-        }
+            console.log(text);
+            setFilter(text);
+        };
 
         const handleSort = (sortingValue) => {
-            setSortingOption(sortingParams[sortingValue])
-            setCurrentSort(sortingValue)
-        }
+            setSortingOption(sortingParams[sortingValue]);
+            setCurrentSort(sortingValue);
+        };
 
         return (
             <View>
@@ -47,7 +47,7 @@ export class RepositoryListContainer extends React.Component {
                 />
                 <SortingMenu currentSort={currentSort} onSort={handleSort} />
             </View>
-        )
+        );
     };
 
 
@@ -68,23 +68,20 @@ export class RepositoryListContainer extends React.Component {
 };
 
 const RepositoryList = () => {
-    const [filter, setFilter] = useState("")
-    const [debouncedFilter] = useDebounce(filter, 500)
-    const [currentSort, setCurrentSort] = useState("createdAtDESC")
-    const [sortingOption, setSortingOption] = useState(sortingParams.createdAtDESC)
+    const [filter, setFilter] = useState("");
+    const [debouncedFilter] = useDebounce(filter, 500);
+    const [currentSort, setCurrentSort] = useState("createdAtDESC");
+    const [sortingOption, setSortingOption] = useState(sortingParams.createdAtDESC);
     const { repositories, fetchMore } = useRepositories({ ...sortingOption, searchKeyword: debouncedFilter });
+
     const repositoryNodes = repositories
         ? repositories.edges.map(edge => edge.node)
         : [];
     const onEndReach = () => {
-        console.log('You have reached the end of the list');
-        console.log(repositories.pageInfo.endCursor)
-        fetchMore({
-            variables: {
-                ...sortingOption,
-                after: repositories.pageInfo.endCursor
-            }
-        });
+        if (repositories) {
+            console.log("You have reached the end of the list");
+            fetchMore();
+        }
     };
 
 
