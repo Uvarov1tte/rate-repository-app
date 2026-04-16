@@ -25,7 +25,7 @@ const ItemSeparator = () => <View style={styles.separator} />;
 
 export class RepositoryListContainer extends React.Component {
     renderHeader = () => {
-        const { filter, setFilter, currentSort, setCurrentSort, setSortingOption } = this.props
+        const { filter, setFilter, currentSort, setCurrentSort, setSortingOption, onEndReach } = this.props
 
         const handleFilter = (text) => {
             console.log(text)
@@ -57,6 +57,7 @@ export class RepositoryListContainer extends React.Component {
                 data={this.props.repositories}
                 ItemSeparatorComponent={ItemSeparator}
                 ListHeaderComponent={this.renderHeader}
+                onEndReached={this.props.onEndReach}
                 renderItem={({ item }) => <RepositoryItem single={false} repository={item} />}
                 keyExtractor={item => item.id}
             />
@@ -71,10 +72,22 @@ const RepositoryList = () => {
     const [debouncedFilter] = useDebounce(filter, 500)
     const [currentSort, setCurrentSort] = useState("createdAtDESC")
     const [sortingOption, setSortingOption] = useState(sortingParams.createdAtDESC)
-    const { repositories } = useRepositories({ ...sortingOption, searchKeyword: debouncedFilter });
+    const { repositories, fetchMore } = useRepositories({ ...sortingOption, searchKeyword: debouncedFilter });
     const repositoryNodes = repositories
         ? repositories.edges.map(edge => edge.node)
         : [];
+    const onEndReach = () => {
+        console.log('You have reached the end of the list');
+        console.log(repositories.pageInfo.endCursor)
+        fetchMore({
+            variables: {
+                ...sortingOption,
+                after: repositories.pageInfo.endCursor
+            }
+        });
+    };
+
+
 
     return <RepositoryListContainer
         repositories={repositoryNodes}
@@ -83,6 +96,7 @@ const RepositoryList = () => {
         currentSort={currentSort}
         setCurrentSort={setCurrentSort}
         setSortingOption={setSortingOption}
+        onEndReach={onEndReach}
     />;
 };
 

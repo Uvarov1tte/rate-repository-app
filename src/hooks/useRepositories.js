@@ -17,13 +17,28 @@ export const sortingParams = {
 };
 
 const useRepositories = (sortingOption) => {
-    const { data, error, loading } = useQuery(GET_REPOSITORY_DETAILS, {
+    const { data, error, loading, fetchMore } = useQuery(GET_REPOSITORY_DETAILS, {
         variables: sortingOption,
         fetchPolicy: "cache-and-network",
     });
 
+    const handleFetchMore = () => {
+        const canFetchMore = !loading && data?.repositories.pageInfo.hasNextPage;
+
+        if (!canFetchMore) {
+            return;
+        }
+
+        fetchMore({
+            variables: {
+                after: data.repositories.pageInfo.endCursor,
+                ...sortingOption,
+            },
+        });
+    };
+
     const repositories = data?.repositories;
-    return { repositories, error, loading };
+    return { repositories, error, loading, fetchMore: handleFetchMore, };
 };
 
 export default useRepositories;
